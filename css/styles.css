@@ -1,0 +1,265 @@
+/*
+ *
+ * CSS written based on SMACSS architecture.
+ * To learn more, visit: http://smacss.com/
+ * 
+ * For simplicity, no reset or normalize is added. 
+ * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
+ *
+*/
+/* ---- Base Rules ---- */
+
+body {
+    background: rgb(136, 203, 171);
+    background: linear-gradient(0deg, rgba(40, 150, 110, 1) 0%, rgba(0, 13, 60, 1) 100%);
+    margin: 0;
+    font-family: "Merriweather", serif;
+    color: #fff;
+}
+
+/* Typeography General*/
+h1 {
+    font-family: "Fira Sans", sans-serif;
+    font-size: 3em;
+    margin: 2em 1rem;
+}
+
+@media only screen and (min-width: 35em) {
+    h1 {
+        font-size: 7em;
+        margin: 2em 4rem 2em;
+    }
+}
+
+h2 {
+    border-bottom: 1px solid #cc1;
+    font-family: "Oxygen", Sans-Serif;
+    font-size: 3em;
+    color: #fff;
+}
+
+p {
+    line-height: 1.6em;
+    color: #eee;
+}
+
+/* ---- Layout Rules ---- */
+main {
+    margin: 10vh 1em 10vh;
+}
+
+.main-hero {
+    min-height: 40vh;
+    padding-top: 3em;
+}
+
+section {
+    position: relative;
+    min-height: 70vh;
+}
+
+/* ---- Module Rules ---- */
+
+/* Navigation Styles*/
+.navbar__menu ul {
+    height: 90%;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    transition: all 0.3s linear;
+}
+
+.navbar__menu li {
+    display: inline-block;
+}
+
+.navbar__menu .menu__link {
+    display: block;
+    padding: 0.3em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #003;
+    font-size: 1.1em;
+    
+}
+
+.navbar__menu .menu__link:hover {
+    background: #7be;
+    color: #fff;
+    transition: ease 0.3s all;
+    cursor: pointer;
+}
+
+.navbar__menu .menu__link--active {
+    background: #7be;
+    color: #fff;
+}
+
+.scroll-top {
+    cursor: pointer;
+    background: #fff;
+    position: fixed;
+    bottom: 2em;
+    right: 9em;
+    width: 3em;
+    height: 2em;
+    z-index: 10;
+    color: #39b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
+}
+
+.scroll-top.hide {
+  display: none;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Header Styles */
+.page__header {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+/* Footer Styles */
+.page__footer {
+    background: #000;
+    padding: 3em;
+    color: #fff;
+}
+
+.page__footer p {
+    color: #fff;
+}
+
+/* ---- Theme Rules ---- */
+/* Landing Container Styles */
+.landing__container {
+    padding: 1em;
+    text-align: left;
+}
+
+@media only screen and (min-width: 35em) {
+    .landing__container {
+        max-width: 50em;
+        padding: 3em;
+    }
+}
+
+section:nth-of-type(even) .landing__container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right;
+}
+
+/* Background Circles */
+/* Note that background circles are created with psuedo elements before and after */
+/* Circles appear to be random due to use of :nth-of-type psuedo class */
+section:nth-of-type(odd) .landing__container::before {
+    content: "";
+    background: rgba(255, 255, 255, 0.187);
+    position: absolute;
+    z-index: -25;
+    width: 65vh;
+    height: 25vh;
+    border-radius: 70%;
+    opacity: 0;
+    transition: ease 0.9s all;
+}
+
+section:nth-of-type(even) .landing__container::before {
+    content: "";
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    z-index: -9;
+    width: 81vh;
+    height: 29vh;
+    border-radius: 75%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n) .landing__container::after {
+    content: "";
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+    position: absolute;
+    right: 25em;
+    bottom: 5em;
+    z-index: -5;
+    width: 41vh;
+    height: 23vh;
+    border-radius: 70%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 1) .landing__container::after {
+    content: "";
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+    position: absolute;
+    right: 27vw;
+    bottom: 7em;
+    z-index: -5;
+    width: 35vh;
+    height: 19vh;
+    border-radius: 70%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+section.active {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+section.active .landing__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.active .landing__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg) translate(-1em) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translate(-1em) rotate(-360deg);
+    }
+}
